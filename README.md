@@ -15,4 +15,4 @@ yarn dev
 - Vuetify
 - microCMS
 - Netlify
-# my-blog-v2
+
