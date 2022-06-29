@@ -1,5 +1,5 @@
+import microcmsModule from 'nuxt-microcms-module'
 import colors from 'vuetify/es5/util/colors'
-
 export default {
   ssr: false,
   target: 'static',
@@ -79,7 +79,8 @@ export default {
   build: {
     generate: {
       async routes() {
-        const pages = await this.$microcms.get({endpoint:'blog'})
+        const pages = await microcmsModule
+          .get({ endpoint: 'blog' })
           .then((res) =>
             res.data.contents.map((content) => ({
               route: `/${content.id}`,
