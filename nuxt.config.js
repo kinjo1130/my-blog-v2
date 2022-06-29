@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   ssr: false,
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - nuxt2-my-blog-v2',
@@ -75,5 +76,18 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    generate: {
+      async routes() {
+        const pages = await this.$microcms.get({endpoint:'blog'})
+          .then((res) =>
+            res.data.contents.map((content) => ({
+              route: `/${content.id}`,
+              payload: content,
+            }))
+          )
+        return pages
+      },
+    },
+  },
 }
