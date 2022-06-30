@@ -20,9 +20,7 @@ export default {
       contents: {},
     }
   },
-  //TODO:ここの詳細ページをどうにかコンポーネント化にする
   created() {
-    console.log(this.$route.params.slug)
     const id = this.$route.params.slug
     this.$axios
       .$get(
@@ -34,7 +32,6 @@ export default {
         }
       )
       .then((res) => {
-        console.log({ res })
         this.contents = res
       })
   },
