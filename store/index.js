@@ -11,10 +11,15 @@ export const mutations = {
 export const actions = {
   //TODO:何回も取得してくるのも防ぐ
   getArticles({ commit }) {
-    this.$microcms.get({ endpoint: 'blog' }).then((res) => {
-      console.log(res)
-      commit('setArticles', res.contents)
-    })
+    this.$axios
+      .$get(`https://${this.$config.SERVICE_DOMAIN}.microcms.io/api/v1/${this.$config.END_POINT}`, {
+        headers: {
+          'X-MICROCMS-API-KEY': this.$config.API_KEY,
+        },
+      })
+      .then((res) => {
+        console.log({res})
+        commit('setArticles', res.contents)
+      })
   },
-
 }

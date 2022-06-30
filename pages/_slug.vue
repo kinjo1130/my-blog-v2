@@ -24,10 +24,19 @@ export default {
   created() {
     console.log(this.$route.params.slug)
     const id = this.$route.params.slug
-    this.$microcms.get({ endpoint: 'blog/' + id }).then((res) => {
-      console.log(res)
-      this.contents = res
-    })
+    this.$axios
+      .$get(
+        `https://${this.$config.SERVICE_DOMAIN}.microcms.io/api/v1/${this.$config.END_POINT}/${id}` ,
+        {
+          headers: {
+            'X-MICROCMS-API-KEY': this.$config.API_KEY,
+          },
+        }
+      )
+      .then((res) => {
+        console.log({ res })
+        this.contents = res
+      })
   },
 }
 </script>

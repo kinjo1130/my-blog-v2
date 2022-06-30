@@ -1,4 +1,3 @@
-import microcmsModule from 'nuxt-microcms-module'
 import colors from 'vuetify/es5/util/colors'
 export default {
   ssr: false,
@@ -34,7 +33,6 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    'nuxt-microcms-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -42,20 +40,24 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-  microcms: {
-    options: {
-      serviceDomain: process.env.SERVICE_DOMAIN,
-      apiKey: process.env.API_KEY,
-    },
-    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
-  },
+  // microcms: {
+  //   options: {
+  //     serviceDomain: process.env.SERVICE_DOMAIN,
+  //     apiKey: process.env.API_KEY,
+  //   },
+  //   mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+  // },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
   },
-
+  publicRuntimeConfig: {
+    API_KEY: process.env.API_KEY,
+    END_POINT: process.env.END_POINT,
+    SERVICE_DOMAIN: process.env.SERVICE_DOMAIN,
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -79,14 +81,22 @@ export default {
   build: {
     generate: {
       async routes() {
-        const pages = await microcmsModule
-          .get({ endpoint: 'blog' })
+        const pages = await this.$axios
+          .$get(
+            `https://${process.env.SERVICE_DOMAIN}.microcms.io/api/v1/${process.env.END_POINT}`,
+            {
+              headers: {
+                'X-MICROCMS-API-KEY': process.env.API_KEY,
+              },
+            }
+          )
           .then((res) =>
             res.data.contents.map((content) => ({
               route: `/${content.id}`,
               payload: content,
             }))
           )
+        console.log(pages)
         return pages
       },
     },
