@@ -29,7 +29,6 @@ export const actions = {
       })
   },
   async getContents({ commit }, id) {
-    console.log(id)
     await this.$axios
       .$get(
         `https://${this.$config.SERVICE_DOMAIN}.microcms.io/api/v1/${this.$config.END_POINT}/${id}`,
