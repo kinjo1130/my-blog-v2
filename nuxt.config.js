@@ -40,17 +40,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-  // microcms: {
-  //   options: {
-  //     serviceDomain: process.env.SERVICE_DOMAIN,
-  //     apiKey: process.env.API_KEY,
-  //   },
-  //   mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
-  // },
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
   },
   publicRuntimeConfig: {
@@ -58,9 +49,7 @@ export default {
     END_POINT: process.env.END_POINT,
     SERVICE_DOMAIN: process.env.SERVICE_DOMAIN,
   },
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: false,
       themes: {
@@ -76,8 +65,6 @@ export default {
       },
     },
   },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     generate: {
       async routes() {
@@ -96,7 +83,6 @@ export default {
               payload: content,
             }))
           )
-        console.log(pages)
         return pages
       },
     },

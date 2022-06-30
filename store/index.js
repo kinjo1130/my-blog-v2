@@ -18,7 +18,6 @@ export const actions = {
         },
       })
       .then((res) => {
-        console.log({res})
         commit('setArticles', res.contents)
       })
   },

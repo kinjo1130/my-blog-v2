@@ -18,11 +18,6 @@ export default {
       articles: [],
     }
   },
-  //TODO:ここの配列のpushが動かないから、ここを治すようにする
-  mounted() {
-    //this.articles = this.$store.state.articles
-    //this.articles.push(this.$store.state.articles)
-  },
   created() {
     this.$store.dispatch('getArticles')
   },
