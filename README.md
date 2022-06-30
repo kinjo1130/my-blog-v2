@@ -2,12 +2,12 @@
 
 依存関係のインストール
 ```
-yarn install
+$ yarn install
 ```
 
 サーバー起動
 ```
-yarn dev
+$ yarn dev
 ```
 
 使用技術
@@ -15,4 +15,3 @@ yarn dev
 - Vuetify
 - microCMS
 - Netlify
-
