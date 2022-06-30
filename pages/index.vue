@@ -8,4 +8,14 @@
     </v-flex>
   </div>
 </template>
-
+<script lang="ts">
+export default {
+  data() {
+    return {}
+  },
+  async asyncData({ store }) {
+    await store.dispatch('getArticles')
+    console.log('uu')
+  },
+}
+</script>

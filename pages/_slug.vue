@@ -13,27 +13,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {
       contents: {},
     }
   },
-  created() {
-    const id = this.$route.params.slug
-    this.$axios
-      .$get(
-        `https://${this.$config.SERVICE_DOMAIN}.microcms.io/api/v1/${this.$config.END_POINT}/${id}` ,
-        {
-          headers: {
-            'X-MICROCMS-API-KEY': this.$config.API_KEY,
-          },
-        }
-      )
-      .then((res) => {
-        this.contents = res
-      })
+
+  async asyncData({ store, params }) {
+    await store.dispatch('getContents', params.slug)
+    return { contents: store.state.contents }
   },
 }
 </script>

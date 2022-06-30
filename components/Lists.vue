@@ -10,17 +10,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   layout: 'flex',
   data() {
     return {
       articles: [],
     }
-  },
-  created() {
-    this.$store.dispatch('getArticles')
-  },
+  }
 }
 </script>
 
