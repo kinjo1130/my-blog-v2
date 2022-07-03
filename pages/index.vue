@@ -9,12 +9,13 @@
   </div>
 </template>
 <script lang="ts">
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   data() {
     return {}
   },
   async asyncData({ store }) {
     await store.dispatch('getArticles')
   },
-}
+})
 </script>

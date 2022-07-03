@@ -14,7 +14,8 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   data() {
     return {
       contents: {},
@@ -25,7 +26,7 @@ export default {
     await store.dispatch('getContents', params.slug)
     return { contents: store.state.contents }
   },
-}
+})
 </script>
 
 <style>

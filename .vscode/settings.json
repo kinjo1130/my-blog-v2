@@ -1,3 +1,16 @@
 {
-  "nuxt.isNuxtApp": false
+  "nuxt.isNuxtApp": false,
+
+  // フォーマッタをPrettierにする。jsonやtsは、vscode標準が適用されるため、上書き
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 保存、ペースト、改行時に整形する。ただし、Vueファイルは保存時のみ。
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true
 }

@@ -33,6 +33,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    'nuxt-typed-vuex',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -45,7 +46,8 @@ export default {
     baseURL: '/',
   },
   publicRuntimeConfig: {
-    apiKey: process.env.NODE_ENV !== 'production' ? process.env.API_KEY : undefined,
+    apiKey:
+      process.env.NODE_ENV !== 'production' ? process.env.API_KEY : undefined,
   },
   privateRuntimeConfig: {
     API_KEY: process.env.API_KEY,
@@ -69,6 +71,7 @@ export default {
     },
   },
   build: {
+    transpile: [/typed-vuex/],
     generate: {
       async routes() {
         const pages = await this.$axios

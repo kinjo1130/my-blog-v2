@@ -11,14 +11,22 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+interface Article {
+  id: number
+  title: string
+}
+export default Vue.extend({
   layout: 'flex',
+  created() {
+    console.log(this.$store.state.articles)
+  },
   data() {
     return {
       articles: [],
     }
   }
-}
+})
 </script>
 
 <style></style>
