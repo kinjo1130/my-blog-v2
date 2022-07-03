@@ -4,6 +4,7 @@
       v-for="article in this.$store.state.articles"
       :key="article.id"
       :to="article.id"
+      class="my-5"
     >
       <v-card-title>{{ article.title }}</v-card-title>
     </v-card>

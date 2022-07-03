@@ -46,12 +46,12 @@ export default {
     baseURL: '/',
   },
   publicRuntimeConfig: {
-    API_KEY:
-      process.env.NODE_ENV !== 'production' ? process.env.API_KEY : undefined,
     END_POINT:
       process.env.NODE_ENV !== 'production' ? process.env.END_POINT : undefined,
     SERVICE_DOMAIN:
-      process.env.NODE_ENV !== 'production' ? process.env.SERVICE_DOMAIN : undefined,
+      process.env.NODE_ENV !== 'production'
+        ? process.env.SERVICE_DOMAIN
+        : undefined,
   },
   privateRuntimeConfig: {
     API_KEY: process.env.API_KEY,
@@ -61,7 +61,20 @@ export default {
   vuetify: {
     theme: {
       dark: false,
+      defaultAssets: {
+        font: false,
+        icons: false,
+      },
       themes: {
+        light: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3,
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
