@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/", (function(a){return {data:[{}],fetch:{},mutations:[["setArticles",[{id:"46wmvjsx449",createdAt:a,updatedAt:a,publishedAt:a,revisedAt:a,title:"初めての記事投稿だよ",body:"\u003Cp\u003Eこんばんは、初めましてきんじょうと言います。\u003Cbr\u003Eこの度NetlifyCMSからmicroCMSに新しく作り直しました！\u003Cbr\u003Eその初投稿です！そこまで話すことはないですが、よろしくお願いします！\u003C\u002Fp\u003E"}]]]}}("2022-06-28T14:27:14.633Z")));

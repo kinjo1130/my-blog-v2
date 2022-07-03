@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
-export default {
+import axios from 'axios'
+import { NuxtConfig } from '@nuxt/types'
+const nuxtconfig: NuxtConfig = {
   ssr: true,
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -59,11 +61,11 @@ export default {
     SERVICE_DOMAIN: process.env.SERVICE_DOMAIN,
   },
   vuetify: {
-    defaultAssets: {
-      font: false,
-      icons: false,
-    },
     theme: {
+      defaultAssets: {
+        font: false,
+        icons: false,
+      },
       dark: false,
       themes: {
         light: {
@@ -80,25 +82,26 @@ export default {
   },
   build: {
     transpile: [/typed-vuex/],
-    generate: {
-      async routes() {
-        const pages = await this.$axios
-          .$get(
-            `https://${process.env.SERVICE_DOMAIN}.microcms.io/api/v1/${process.env.END_POINT}`,
-            {
-              headers: {
-                'X-MICROCMS-API-KEY': process.env.API_KEY,
-              },
-            }
-          )
-          .then((res) =>
-            res.data.contents.map((content) => ({
-              route: `/${content.id}`,
-              payload: content,
-            }))
-          )
-        return pages
-      },
-    },
   },
+  // generate: {
+  //   async routes() {
+  //     const pages = await axios
+  //       .get(
+  //         `https://${process.env.SERVICE_DOMAIN}.microcms.io/api/v1/${process.env.END_POINT}`,
+  //         {
+  //           headers: {
+  //             'X-MICROCMS-API-KEY': process.env.API_KEY,
+  //           },
+  //         }
+  //       )
+  //       .then((res) =>
+  //         res.data.contents.map((content:any) => ({
+  //           route: `/${content.id}`,
+  //           payload: content,
+  //         }))
+  //       )
+  //     return pages
+  //   },
+  // },
 }
+export default nuxtconfig;

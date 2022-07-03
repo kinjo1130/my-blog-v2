@@ -7,6 +7,7 @@
       class="my-5"
     >
       <v-card-title>{{ article.title }}</v-card-title>
+      <nuxt-link to="/test"></nuxt-link>
     </v-card>
   </div>
 </template>
