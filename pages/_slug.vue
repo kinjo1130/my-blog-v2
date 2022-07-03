@@ -21,7 +21,6 @@ export default Vue.extend({
       contents: {},
     }
   },
-
   async asyncData({ store, params }) {
     await store.dispatch('getContents', params.slug)
     return { contents: store.state.contents }

@@ -10,7 +10,6 @@ export type RootState = ReturnType<typeof state>
 export const mutations = mutationTree(state, {
   setArticles(state, articles: []) {
     state.articles = articles
-    console.log('iii')
   },
   setContents(state, contents: {}) {
     state.contents = contents
@@ -33,7 +32,6 @@ export const actions = actionTree(
         )
         .then((res) => {
           commit('setArticles', res.contents)
-          console.log('uu')
         })
     },
     async getContents({ commit }, id) {

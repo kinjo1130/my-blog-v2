@@ -18,9 +18,6 @@ interface Article {
 }
 export default Vue.extend({
   layout: 'flex',
-  created() {
-    console.log(this.$store.state.articles)
-  },
   data() {
     return {
       articles: [],
