@@ -3,7 +3,7 @@
     <Header>書き残しサイト</Header>
     <v-flex>
       <v-container>
-        <v-row class="d-flex justify-center">
+        <v-row class="d-flex justify-center pt-7 mb-15">
           <v-col cols="10">
             <div v-html="contents.body" id="fixSize"></div>
           </v-col>

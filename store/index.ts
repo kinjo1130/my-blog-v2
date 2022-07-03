@@ -33,6 +33,9 @@ export const actions = actionTree(
         .then((res) => {
           commit('setArticles', res.contents)
         })
+        .catch((err) => {
+          console.log({ err })
+        })
     },
     async getContents({ commit }, id) {
       await this.$axios
@@ -46,6 +49,9 @@ export const actions = actionTree(
         )
         .then((res) => {
           commit('setContents', res)
+        })
+        .catch((err) => {
+          console.log({ err })
         })
     },
   }

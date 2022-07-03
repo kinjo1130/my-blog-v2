@@ -59,23 +59,14 @@ export default {
     SERVICE_DOMAIN: process.env.SERVICE_DOMAIN,
   },
   vuetify: {
+    defaultAssets: {
+      font: false,
+      icons: false,
+    },
     theme: {
       dark: false,
-      defaultAssets: {
-        font: false,
-        icons: false,
-      },
       themes: {
         light: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-        dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
